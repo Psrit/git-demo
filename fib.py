@@ -1,15 +1,23 @@
 def fib(n: int) -> int:
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    elif isinstance(n, int) and n >= 2:
-        return fib(n - 1) + fib(n - 2)
-    else:
+    if not (isinstance(n, int) and n >= 0):
         raise ValueError(
             "Invalid argument n: {}. ".format(n) +
             "Non-negative integer is expected."
         )
+
+    _fib = []
+
+    for i in range(n + 1):
+        if i == 0:
+            _fib.append(0)
+        elif i == 1:
+            _fib.append(1)
+        else:
+            _fib.append(
+                _fib[-1] + _fib[-2]
+            )
+
+    return _fib[-1]
 
 
 if __name__ == "__main__":
